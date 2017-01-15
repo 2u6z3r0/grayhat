@@ -1,0 +1,16 @@
+<html>
+<header>
+    <title>Welcome to gray-hat.org</title>
+</header>
+<br>
+{{ title }} is working
+
+{% for obj in object_list %}
+    {{ obj.id }} </br>
+    {{ obj.title }} </br>
+    {{ obj.content }} </br>
+    {{ obj.created }} </br>
+    {{ obj.updated }} </br> </br>
+{% endfor %}
+</body>
+</html>
