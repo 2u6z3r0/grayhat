@@ -1,10 +1,7 @@
-<html>
-<body>
-<h1>{{ title }}</h1>
+{% extends "base.html" %}
+{% block content %}
 <form method="post" action=""> {% csrf_token %}
 {{ form.as_p }}
 <input type="submit" value="Create Post">
 </form>
-
-</body>
-</html>
+{% endblock content %}

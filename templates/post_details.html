@@ -1,17 +1,10 @@
-<html>
-<body>
-{% if messages %}
-    <ul class="messages">
-    {% for message in messages %}
-        <li{% if message.tags %} class="{{ message.tags }}"{% endif %}>{{ message }}</li>
-    {% endfor %}
-    </ul>
-{% endif %}
-<h1> {{ title }} </h1>
-{{ instance.title }} </br>
-{{ instance.content }} </br>
-{{ instance.created }} </br>
-{{ instance.updated }} </br>
+{% extends "base.html" %}
+{% block head_title %}
+{{ instance.title }} | {{ block.super }}
+{% endblock head_title %}
 
-</body>
-</html>
+{% block content %}
+    {{ instance.content }} </br>
+    {{ instance.created }} </br>
+    {{ instance.updated }} </br>
+{% endblock content %}
