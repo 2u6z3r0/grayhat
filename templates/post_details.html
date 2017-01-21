@@ -5,8 +5,8 @@
 
 
 {% block content %}
-    <h1>{{ instance.title }}</h1>
-    {{ instance.content }} </br>
-    {{ instance.created }} </br>
-    {{ instance.updated }} </br>
+    <div class="col-sm-8 col-sm-offset-2">
+    <h1>{{ instance.title }} <small>{{ instance.created }}</small></h1>
+    {{ instance.content|linebreaks }} </br>
+    </div>
 {% endblock content %}

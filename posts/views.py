@@ -29,7 +29,7 @@ def post_details(request, id):
 def post_list(request):
     queryset = Post.objects.all()
     context = {
-        "title": "List",
+        "title": "List is working",
         "object_list": queryset
     }
     return render(request, 'post_list.html', context)

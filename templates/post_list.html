@@ -1,9 +1,24 @@
 {% extends "base.html" %}
+
 {% block content %}
+    <div class="col-sm-8 col-sm-offset-2">
+    <h1> {{ title }}</h1>
+
     {% for obj in object_list %}
-        <a href="{{ obj.get_absolute_url }}"> {{ obj.title }} </a> </br> <!-- method 3: getting url from model -->
-        {{ obj.content }} </br>
-        {{ obj.created }} </br>
-        {{ obj.updated }} </br> </br>
+     <div class="row">
+        <div class="col-sm-12">
+        <div class="thumbnail">
+{#              <img src="..." alt="...">#}
+          <div class="caption">
+            <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.created|timesince }} ago</small></h3>
+            <p>{{ obj.content|truncatechars:240 }}</p>
+            <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+          </div>
+        </div>
+        </div>
+     </div>
     {% endfor %}
+
+    </div>
 {% endblock content %}
+
