@@ -6,8 +6,8 @@ from .views import (post_delete, post_create,
 urlpatterns = [
     url(r'^$', post_list, name="list"),
     url(r'^create$', post_create),
-    url(r'^(?P<id>\d+)/$', post_details, name="details"),
-    url(r'^(?P<id>\d+)/edit/$', post_update, name="update"),
-    url(r'^(?P<id>\d+)/delete$', post_delete),
+    url(r'^(?P<slug>[\w-]+)/$', post_details, name="details"),
+    url(r'^(?P<slug>[\w-]+)/edit/$', post_update, name="update"),
+    url(r'^(?P<slug>[\w-]+)/delete$', post_delete),
 
 ]
