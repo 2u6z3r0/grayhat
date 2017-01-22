@@ -12,6 +12,7 @@ def post_create(request):
     form = PostForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         instance = form.save(commit=False)
+        instance.author = request.author
         messages.success(request, "post created")
         instance.save()
         return HttpResponseRedirect(instance.get_absolute_url())
