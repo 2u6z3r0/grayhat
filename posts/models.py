@@ -26,7 +26,6 @@ class Post(models.Model):
     width_field = models.IntegerField(default=0)
     content = models.TextField()
 
-
     def __str__(self):
         return self.title
 

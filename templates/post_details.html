@@ -9,10 +9,12 @@
     {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-responsive">
     {% endif %}
-    <h1>{{ instance.title }} <small>{{ instance.created }}</small></h1>
+    <h1>{{ instance.title }}{% if instance.publish %} <span style="color: red;">Draft</span>
+    {% endif %} <small>{{ instance.publish }}</small></h1>
     {% if instance.author.get_full_name %}
-    <p>Author: {{ instance.author.get_full_name }}</p>
+    <p class="text-primary">Author: {{ instance.author.get_full_name }}</p>
     {% endif %}
+    <hr>
     {{ instance.content|linebreaks }} </br>
     </div>
 {% endblock content %}
