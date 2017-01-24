@@ -3,12 +3,16 @@ from django.conf import settings
 from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
 from django.utils.text  import slugify
-
+from django.utils import timezone
 
 
 # Create your models here.
 def upload_location(instance, filename):
     return "%s/%s" %(instance.id, filename)
+
+class PostManager(models.Manager):
+    def active(self, *args, **kwargs):
+        return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
 
 class Post(models.Model):
     title = models.CharField(max_length=120)
@@ -35,6 +39,8 @@ class Post(models.Model):
 
     class Meta:
         ordering = ["-created", "-updated"]
+    objects = PostManager()
+
 def create_slug(instance, new_slug=None):
     slug = slugify(instance.title)
     if new_slug is not None:

@@ -5,7 +5,11 @@ from django.contrib import messages
 # from django.http import HttpResponse
 from .models import Post
 from .forms import PostForm
+from django.utils import timezone
+from django.db.models import Q
 # Create your views here.
+
+
 def post_create(request):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
@@ -22,16 +26,34 @@ def post_create(request):
     }
     return render(request, "post_form.html", context)
 
+
 def post_details(request, slug):
+    today = timezone.now().date()
     instance = get_object_or_404(Post, slug=slug)
+    if instance.draft:
+        if not request.user.is_staff or not request.user.is_superuser:
+            raise Http404
     context = {
         "title": instance.title,
-        "instance": instance
+        "instance": instance,
+        "today": today
     }
     return render(request, "post_details.html", context)
 
+
 def post_list(request):
-    queryset_list = Post.objects.all()
+    queryset_list = Post.objects.active()
+    if request.user.is_staff or request.user.is_superuser:
+        queryset_list = Post.objects.all()
+    query = request.GET.get('q')
+    if query:
+        queryset_list = queryset_list.filter(
+            Q(title__icontains=query) |
+            Q(content__icontains=query) |
+            Q(author__first_name__icontains=query) |
+            Q(author__last_name__icontains=query)
+        )
+
     paginator = Paginator(queryset_list, 8) #shows 8 posts per page
     page_request_var = 'page'
     page = request.GET.get(page_request_var)
@@ -51,6 +73,7 @@ def post_list(request):
     }
     return render(request, 'post_list.html', context)
 
+
 def post_update(request, slug):
     if not request.user.is_staff or not request.user.is_superuser:
         raise Http404
@@ -66,6 +89,7 @@ def post_update(request, slug):
         "form": form
     }
     return render(request, "post_form.html", context)
+
 
 def post_delete(request, slug=None):
     if not request.user.is_staff or not request.user.is_superuser:
