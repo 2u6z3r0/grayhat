@@ -4,7 +4,8 @@ from django.db.models.signals import pre_save
 from django.core.urlresolvers import reverse
 from django.utils.text import slugify
 from django.utils import timezone
-
+from markdown_deux import markdown
+from django.utils.safestring import mark_safe
 
 # Create your models here.
 def upload_location(instance, filename):
@@ -38,6 +39,10 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("posts:details", kwargs={"slug": self.slug})
         # return "/post/%s" % self.id
+
+    def get_markdown(self):
+        content = self.content
+        return mark_safe(markdown(content))
 
     class Meta:
         ordering = ["-created", "-updated"]
