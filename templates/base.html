@@ -22,7 +22,21 @@
 {#<img src="{% static 'img/beach.jpg' %}">#}
 
 <!-- Latest compiled and minified JavaScript -->
+<script src="{% static 'js/jquery-1.12.4.js' %}"></script>
 <script src="{% static 'js/bootstrap.js' %}" ></script>
+<script src="{% static 'js/marked.js' %}" > </script>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".content-markdown").each(function () {
+            var content = $(".content-markdown").text()
+{#            console.log(content)#}
+            var markedContent = marked(content)
+{#            console.log(markedContent)#}
+            $(this).html(markedContent)
+        })
+    })
+</script>
 
 </body>
 </html>

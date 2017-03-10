@@ -16,6 +16,6 @@
     <p class="text-primary">Author: {{ instance.author.get_full_name }}</p>
     {% endif %}
     <hr>
-    {{ instance.content|linebreaks }} </br>
+    <div class=" content-markdown">{{ instance.content }}</div> </br>
     </div>
 {% endblock content %}
