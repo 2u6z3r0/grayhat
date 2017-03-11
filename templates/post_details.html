@@ -8,7 +8,7 @@
     {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-responsive">
     {% endif %}
-    <h1>{{ instance.title }} <small>{{ instance.publish }}</small></h1>
+    <h3>{{ instance.title }} <small>{{ instance.publish }}</small></h3>
         {% if instance.draft %} <span style="color: red;">Draft : staff only</span>{% endif %}<br>
         {% if instance.publish > today %} <span style="color: red;">Future post : staff only</span> {% endif %}
     {% if instance.author.get_full_name %}
