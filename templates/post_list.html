@@ -1,15 +1,10 @@
 {% extends "base.html" %}
 
 {% block content %}
-    <div class="col-sm-8 col-sm-offset-2">
-    <h1> {{ title }}</h1>
-    <form method="GET" action="">
-        <input type="text" name="q" placeholder="Search Posts" value="{{ request.GET.q }}">
-        <input type="submit" value="Search">
-    </form>
+{#        <h1> {{ title }}</h1>#}
     {% for obj in object_list %}
      <div class="row">
-        <div class="col-sm-12">
+        <div class="col-sm-12" STYLE="background-color: #FFFFF">
         <div class="thumbnail">
             {% if obj.image %}
             <img src="{{ obj.image.url }}">
@@ -24,7 +19,7 @@
           </div>
         </div>
         </div>
-     </div>
+        </div>
     {% endfor %}
     <div class="pagination">
     <span class="step-links">
@@ -41,6 +36,7 @@
         {% endif %}
     </span>
     </div>
-    </div>
+{#    search box#}
+
 {% endblock content %}
 
