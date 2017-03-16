@@ -4,17 +4,34 @@
 {% endblock head_title %}
 
 {% block content %}
-    <div class="col-sm-8 col-sm-offset-2">
+    <div class="col-sm-8">
+    <div class="thumbnail">
     {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-responsive">
     {% endif %}
-    <h3>{{ instance.title }} <small>{{ instance.publish }}</small></h3>
+    <div class="caption">
+    <h2>{{ instance.title }} <small>{{ instance.publish }}</small></h2>
         {% if instance.draft %} <span style="color: red;">Draft : staff only</span>{% endif %}<br>
         {% if instance.publish > today %} <span style="color: red;">Future post : staff only</span> {% endif %}
-    {% if instance.author.get_full_name %}
-    <p class="text-primary">Author: {{ instance.author.get_full_name }}</p>
-    {% endif %}
+    <p class="text-primary">
+        <span class="col-sm-2 glyphicon glyphicon-eye-open"> {{ instance.total_views }}</span>
+        {% if instance.author.get_full_name %}
+        Author: {{ instance.author.get_full_name }}
+        {% endif %}
+    </p>
     <hr>
     <div class="post-detail-item">{{ instance.get_markdown }}</div> </br>
+    </div>
+    </div>
+    </div>
+    <div class="col-sm-4 fixed">
+         <form role="search" method="GET" action="/post/">
+            <div class="input-group">
+                <input class="form-control" type="text" name="q" placeholder="Search" value="{{ request.GET.q }}">
+                <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit" aria-describedby="btnGroupAddon">Search</button>
+                </span>
+            </div>
+        </form>
     </div>
 {% endblock content %}

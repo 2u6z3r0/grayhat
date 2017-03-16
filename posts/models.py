@@ -32,6 +32,7 @@ class Post(models.Model):
     height_field = models.IntegerField(default=0)
     width_field = models.IntegerField(default=0)
     content = models.TextField()
+    total_views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.title

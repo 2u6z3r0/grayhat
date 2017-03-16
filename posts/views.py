@@ -33,6 +33,9 @@ def post_details(request, slug):
     if instance.draft:
         if not request.user.is_staff or not request.user.is_superuser:
             raise Http404
+    if not instance.draft:
+        instance.total_views += 1
+        instance.save()
     context = {
         "title": instance.title,
         "instance": instance,
@@ -67,7 +70,6 @@ def post_list(request):
         queryset = paginator.page(paginator.num_pages)
 
     context = {
-        "title": "List is working",
         "object_list": queryset,
         "page_request_var": page_request_var
     }
