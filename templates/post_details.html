@@ -33,5 +33,16 @@
                 </span>
             </div>
         </form>
+        <hr>
+            <div class="panel panel-default">
+            <div class="panel-heading">
+            <h4 class="text-center">Top Posts</h4>
+            </div>
+            <ul class="list-group">
+                {% for obj in top_post %}
+                <li class="list-group-item"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
+                {% endfor %}
+            </ul>
+            </div>
     </div>
 {% endblock content %}

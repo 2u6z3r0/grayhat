@@ -29,6 +29,7 @@ def post_create(request):
 
 def post_details(request, slug):
     today = timezone.now().date()
+    queryset_top_list = Post.objects.active().order_by('-total_views')[:5]
     instance = get_object_or_404(Post, slug=slug)
     if instance.draft:
         if not request.user.is_staff or not request.user.is_superuser:
@@ -39,7 +40,8 @@ def post_details(request, slug):
     context = {
         "title": instance.title,
         "instance": instance,
-        "today": today
+        "today": today,
+        "top_post": queryset_top_list,
     }
     return render(request, "post_details.html", context)
 
