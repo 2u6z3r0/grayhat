@@ -46,6 +46,7 @@ def post_details(request, slug):
 
 def post_list(request):
     queryset_list = Post.objects.active()
+    queryset_top_list = Post.objects.active().order_by('-total_views')[:5]
     if request.user.is_staff or request.user.is_superuser:
         queryset_list = Post.objects.all()
     query = request.GET.get('q')
@@ -71,7 +72,8 @@ def post_list(request):
 
     context = {
         "object_list": queryset,
-        "page_request_var": page_request_var
+        "page_request_var": page_request_var,
+        "top_post": queryset_top_list,
     }
     return render(request, 'post_list.html', context)
 

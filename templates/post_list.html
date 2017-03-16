@@ -14,7 +14,7 @@
             <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }} ago</small></h3>
             <span class="col-sm-2 glyphicon glyphicon-eye-open"> {{ obj.total_views }}   </span>
               {% if obj.author.get_full_name %}
-                Author: {{ obj.author.get_full_name }}
+                  <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>
             {% endif %}
             {{ obj.get_markdown|truncatechars_html:240}}
             <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
@@ -52,10 +52,10 @@
         <hr>
             <div class="panel panel-default">
             <div class="panel-heading">
-            <h4 class="text-center">Recent Posts</h4>
+            <h4 class="text-center">Top Posts</h4>
             </div>
             <ul class="list-group">
-                {% for obj in object_list %}
+                {% for obj in top_post %}
                 <li class="list-group-item"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
                 {% endfor %}
             </ul>
