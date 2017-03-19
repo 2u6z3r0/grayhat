@@ -5,19 +5,24 @@
 {#        <h1> {{ title }}</h1>#}
     {% for obj in object_list %}
         <div class="row">
-        <div class="col-sm-12" STYLE="background-color: #FFFFF">
+        <div class="col-sm-12" >
         <div class="thumbnail">
             {% if obj.image %}
             <img src="{{ obj.image.url }}">
             {% endif %}
           <div class="caption post-detail-item" >
-            <h3><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }} ago</small></h3>
-            <span class="col-sm-2 glyphicon glyphicon-eye-open"> {{ obj.total_views }}   </span>
-              {% if obj.author.get_full_name %}
-                  <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>
-            {% endif %}
-            {{ obj.get_markdown|truncatechars_html:240}}
-            <p><a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">View</a></p>
+            <h2><a class="text-muted" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }} ago</small></h2>
+            <span class=" glyphicon glyphicon-eye-open"> {{ obj.total_views }} </span> <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>
+            <span class="glyphicon glyphicon-folder-open">
+                {% for cat in obj.categories.all %}
+                    {{ cat }}
+                {% endfor %}
+            </span>
+{#              {% if obj.author.get_full_name %}#}
+{#                  <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>#}
+{#            {% endif %}#}
+            <span class="text-muted text-justify" style="font-size:16px; font-family:'Roboto', sans-serif">{{ obj.get_markdown|truncatechars_html:240}}</span>
+            <a href="{{ obj.get_absolute_url }}" class="btn btn-default" role="button">Read More</a>
           </div>
         </div>
         </div>
@@ -52,11 +57,11 @@
         <hr>
             <div class="panel panel-default">
             <div class="panel-heading">
-            <h4 class="text-center">Top Posts</h4>
+            <h4 class="text-center">TOP POSTS</h4>
             </div>
             <ul class="list-group">
                 {% for obj in top_post %}
-                <li class="list-group-item"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
+                <li class="list-group-item"><a class="text-muted" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
                 {% endfor %}
             </ul>
             </div>

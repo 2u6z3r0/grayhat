@@ -19,6 +19,7 @@ def post_create(request):
         instance.author = request.user
         messages.success(request, "post created")
         instance.save()
+        form.save_m2m()
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {
         "title": "Create Post",
@@ -31,6 +32,7 @@ def post_details(request, slug):
     today = timezone.now().date()
     queryset_top_list = Post.objects.active().order_by('-total_views')[:5]
     instance = get_object_or_404(Post, slug=slug)
+    print(instance.slug)
     if instance.draft:
         if not request.user.is_staff or not request.user.is_superuser:
             raise Http404
@@ -89,6 +91,7 @@ def post_update(request, slug):
         instance = form.save(commit=False)
         messages.success(request, "Post updated")
         instance.save()
+        form.save_m2m()
         return HttpResponseRedirect(instance.get_absolute_url())
     context = {
         "title": "Edit Post",

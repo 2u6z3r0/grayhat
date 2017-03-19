@@ -17,6 +17,24 @@ class PostManager(models.Manager):
         return super(PostManager, self).filter(draft=False).filter(publish__lte=timezone.now())
 
 
+class Category(models.Model):
+    category_name = models.CharField(max_length=60, default="blog")
+    category_description = models.TextField()
+
+    class Meta:
+        verbose_name_plural = "Categories"
+
+    def __str__(self):
+        return self.category_name
+
+
+class Tag(models.Model):
+    tag_name = models.CharField(max_length=50,null="true")
+    tag_description = models.TextField()
+
+    def __str__(self):
+        return self.tag_name
+
 class Post(models.Model):
     title = models.CharField(max_length=120)
     updated = models.DateTimeField(auto_now=True, auto_now_add=False)
@@ -33,6 +51,8 @@ class Post(models.Model):
     width_field = models.IntegerField(default=0)
     content = models.TextField()
     total_views = models.IntegerField(default=0)
+    categories = models.ManyToManyField(Category)
+    tags = models.ManyToManyField(Tag)
 
     def __str__(self):
         return self.title

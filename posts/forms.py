@@ -7,4 +7,4 @@ class PostForm(forms.ModelForm):
     publish = forms.DateField(widget=forms.SelectDateWidget)
     class Meta:
         model = Post
-        fields = ['title', 'content', 'image', 'draft', 'publish']
+        fields = ['title', 'content', 'image', 'draft', 'publish', 'categories', 'tags']
