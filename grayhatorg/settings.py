@@ -37,9 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     # third party
     'pagedown',
     'markdown_deux',
+    'disqus',
     # local
     'posts',
 ]
@@ -132,3 +134,8 @@ STATICFILES_DIRS = [
 
 STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn")
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "media_cdn")
+#disqus comment related
+DISQUS_API_KEY = 'K6W4ccrq9RkCRSp4lfQgkT5Vk7IcqmtpOfE1ERiQ7B5VNM42QSgZRwuTxAEW4Ero'
+DISQUS_WEBSITE_SHORTNAME = 'grayhat'
+
+SITE_ID=1

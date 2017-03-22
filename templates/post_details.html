@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 {% block head_title %}
 {{ instance.title }} | {{ block.super }}
 {% endblock head_title %}
@@ -10,20 +11,26 @@
     {% if instance.image %}
     <img src="{{ instance.image.url }}" class="img-responsive">
     {% endif %}
-    <div class="caption">
-    <h2 class="text-muted">{{ instance.title }} <small>{{ instance.publish }}</small></h2>
-        {% if instance.draft %} <span style="color: red;">Draft : staff only</span>{% endif %}<br>
-        {% if instance.publish > today %} <span style="color: red;">Future post : staff only</span> {% endif %}
-        <span class=" glyphicon glyphicon-eye-open"> {{ instance.total_views }}</span>
-        <span class="glyphicon glyphicon-user"> {{ instance.author.get_full_name }}</span>
-        <span class="glyphicon glyphicon-folder-open">
-             {% for cat in instance.categories.all %}
-                 {{ cat }}
-             {% endfor %}
-        </span>
-    <div class="post-detail-item text-muted text-justify" style="font-size:16px">{{ instance.get_markdown }}</div> </br>
+        <div class="caption">
+        <h2>{{ instance.title }} <small>{{ instance.publish }}</small></h2>
+            {% if instance.draft %} <span style="color: red;">Draft : staff only</span>{% endif %}<br>
+            {% if instance.publish > today %} <span style="color: red;">Future post : staff only</span> {% endif %}
+            <span class=" glyphicon glyphicon-eye-open"> {{ instance.total_views }}</span>
+            <span class="glyphicon glyphicon-user"> {{ instance.author.get_full_name }}</span>
+            <span class="glyphicon glyphicon-folder-open">
+                 {% for cat in instance.categories.all %}
+                     {{ cat }}
+                 {% endfor %}
+            </span>
+            <div class="post-detail-item text-justify" >{{ instance.get_markdown }}</div> </br>
+        </div>
     </div>
-    </div>
+    {% load disqus_tags %}
+    {% disqus_dev %}
+    {% set_disqus_identifier 'instance.id' %}
+    {% set_disqus_url instance.get_absolute_url %}
+    {% set_disqus_title instance.title %}
+    {% disqus_show_comments 'grayhat' %}
     </div>
     <div class="col-sm-4 fixed">
          <form role="search" method="GET" action="/post/">
@@ -41,7 +48,7 @@
             </div>
             <ul class="list-group">
                 {% for obj in top_post %}
-                <li class="list-group-item"><a class="text-muted" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
+                <li class="list-group-item"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
                 {% endfor %}
             </ul>
             </div>

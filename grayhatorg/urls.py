@@ -20,7 +20,7 @@ from django.contrib import admin
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^post/', include("posts.urls", namespace='posts'))
+    url(r'^blog/', include("posts.urls", namespace='posts'))
 ]
 
 if settings.DEBUG:

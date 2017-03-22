@@ -10,8 +10,8 @@
             {% if obj.image %}
             <img src="{{ obj.image.url }}">
             {% endif %}
-          <div class="caption post-detail-item" >
-            <h2><a class="text-muted" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }} ago</small></h2>
+          <div class="post-detail-item caption" >
+            <h2><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small>{{ obj.publish|timesince }} ago</small></h2>
             <span class=" glyphicon glyphicon-eye-open"> {{ obj.total_views }} </span> <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>
             <span class="glyphicon glyphicon-folder-open">
                 {% for cat in obj.categories.all %}
@@ -21,8 +21,8 @@
 {#              {% if obj.author.get_full_name %}#}
 {#                  <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>#}
 {#            {% endif %}#}
-            <span class="text-muted text-justify" style="font-size:16px; font-family:'Roboto', sans-serif">{{ obj.get_markdown|truncatechars_html:240}}</span>
-            <a href="{{ obj.get_absolute_url }}" class="btn btn-default" role="button">Read More</a>
+            <span class="text-justify">{{ obj.get_markdown|truncatechars_html:240}}</span>
+            <a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Read More</a>
           </div>
         </div>
         </div>
@@ -61,7 +61,7 @@
             </div>
             <ul class="list-group">
                 {% for obj in top_post %}
-                <li class="list-group-item"><a class="text-muted" href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
+                <li class="list-group-item"><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li>
                 {% endfor %}
             </ul>
             </div>
