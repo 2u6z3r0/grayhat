@@ -1,6 +1,6 @@
 import os
 from django.conf import settings
-DEBUG = False
+DEBUG = True
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
