@@ -25,5 +25,10 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
-
+# static files config
+STATIC_URL = '/static/'
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR,'static','static_dirs'),
+]
+STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", 'static_root')
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
