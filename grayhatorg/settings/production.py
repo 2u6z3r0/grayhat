@@ -25,10 +25,16 @@ import dj_database_url
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
 
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 # static files config
 STATIC_URL = '/static/'
+MEDIA_URL = '/media/'
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR,'static','static_dirs'),
+    os.path.join(BASE_DIR, 'static', 'static_dirs'),
 ]
-STATIC_ROOT = os.path.join(BASE_DIR, "static_cdn", 'static_root')
+STATIC_ROOT = os.path.join(BASE_DIR, "static", 'static_root')
+MEDIA_ROOT = os.path.dirname(BASE_DIR, "media")
+
 STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
