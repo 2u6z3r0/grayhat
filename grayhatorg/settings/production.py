@@ -10,14 +10,14 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
-DATABASES = settings.DATABASES
+# DATABASES = settings.DATABASES
 
-# we only need the engine name, as heroku takes care of the rest
-# DATABASES = {
-#     "default": {
-#         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#     }
-# }
+we only need the engine name, as heroku takes care of the rest
+DATABASES = {
+    "default": {
+        "ENGINE": "django.db.backends.postgresql_psycopg2",
+    }
+ }
 
 
 # Update database configuration with $DATABASE_URL.
