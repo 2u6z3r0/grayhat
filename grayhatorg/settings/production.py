@@ -12,7 +12,7 @@ ALLOWED_HOSTS = ['*']
 
 # DATABASES = settings.DATABASES
 
-we only need the engine name, as heroku takes care of the rest
+# we only need the engine name, as heroku takes care of the rest
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
