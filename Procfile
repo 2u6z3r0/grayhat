@@ -1,1 +1,1 @@
-web: gunicorn grayhatorg.wsgi
+web: python grayhatorg/manage.py collectstatic --noinput; gunicorn grayhatorg.wsgi
