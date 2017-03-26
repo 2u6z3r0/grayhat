@@ -12,8 +12,11 @@
             {% endif %}
           <div class="post-detail-item caption" >
               <h2><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small><span class="glyphicon glyphicon-calendar"></span>{{ obj.publish|timesince }} ago</small></h2>
-              <span class=" glyphicon glyphicon-eye-open"></span> {{ obj.total_views }} <span class="glyphicon glyphicon-user"></span> {{ obj.author.get_full_name }}
-              <span class="glyphicon glyphicon-folder-open"></span>
+              <div class="col-sm-2"> <span class=" glyphicon glyphicon-eye-open"></span> {{ obj.total_views }}
+              </div>
+              <div class="col-sm-4"> <span class="glyphicon glyphicon-user"></span> {{ obj.author.get_full_name }}
+              </div>
+              <div class="col-sm-4"> <span class="glyphicon glyphicon-folder-open"></span>
                 {% for cat in obj.categories.all|slice:':1' %}
                     {{ cat }}
                 {% endfor %}
@@ -23,6 +26,8 @@
 {#              {% if obj.author.get_full_name %}#}
 {#                  <span class="glyphicon glyphicon-user"> {{ obj.author.get_full_name }}</span>#}
 {#            {% endif %}#}
+              </div>
+          <br>
             <p class="text-justify">{{ obj.get_markdown|truncatechars_html:240}}</p>
             <a href="{{ obj.get_absolute_url }}" class="btn btn-primary" role="button">Read More</a>
           </div>
