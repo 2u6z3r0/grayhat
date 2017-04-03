@@ -77,9 +77,5 @@ LOGGING = {
             'propagate': True,
             'level':'DEBUG',
         },
-        'posts': {
-            'handlers': ['file'],
-            'level': 'DEBUG',
-        },
-    }
+    },
 }
