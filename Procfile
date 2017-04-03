@@ -1,1 +1,1 @@
-web: gunicorn grayhatorg.wsgi
+web: gunicorn grayhatorg.wsgi --log-file=-
