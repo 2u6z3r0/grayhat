@@ -99,12 +99,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'file': {
-            'level': 'DEBUG',
-            'class': 'logging.FileHandler',
-            'filename': 'mysite.log',
-            'formatter': 'verbose'
-        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
