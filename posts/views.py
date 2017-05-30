@@ -7,8 +7,9 @@ from .models import Post
 from .forms import PostForm
 from django.utils import timezone
 from django.db.models import Q
+import logging
 # Create your views here.
-
+logger = logging.getLogger(__name__)
 
 def post_create(request):
     if not request.user.is_staff or not request.user.is_superuser:
