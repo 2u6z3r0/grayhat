@@ -89,3 +89,39 @@ SERVER_EMAIL = EMAIL_HOST_USER
 DEFAULT_FROM_EMAIL = 'info@garyhat.com'
 
 ADMINS = [('Maxadmin', 'samrat.patil0202@gmail.com')]
+
+
+LOGGING = {
+'version': 1,
+'disable_existing_loggers': True,
+'formatters': {
+    'verbose': {
+        'format': '%(levelname)s [%(asctime)s] %(module)s %(message)s'
+        },
+    },
+'handlers': {
+    'console': {
+        'level': 'DEBUG',
+        'class': 'logging.StreamHandler',
+        'formatter': 'simple'
+        },
+    'file': {
+        'class': 'logging.handlers.RotatingFileHandler',
+        'formatter': 'verbose',
+        'filename': '/var/www/logs/ibiddjango.log',
+        'maxBytes': 1024000,
+        'backupCount': 3,
+        },
+    'mail_admins': {
+        'level': 'ERROR',
+        'class': 'django.utils.log.AdminEmailHandler'
+        }
+    },
+'loggers': {
+    'django': {
+        'handlers': ['file', 'console','mail_admins'],
+        'propagate': True,
+        'level': 'DEBUG',
+        },
+    }
+}
