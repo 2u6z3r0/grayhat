@@ -13,7 +13,6 @@ olefile==0.44
 packaging==16.8
 pbr==2.0.0
 Pillow==4.0.0
-psycopg2==2.7.1
 pyparsing==2.2.0
 six==1.10.0
 static3==0.7.0
