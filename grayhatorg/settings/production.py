@@ -79,3 +79,10 @@ LOGGING = {
         },
     },
 }
+
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'samrat.patil0202@gmail.com'
+EMAIL_HOST_PASSWORD = 'Maxy@2u6z3r0'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+SERVER_EMAIL = EMAIL_HOST_USER
