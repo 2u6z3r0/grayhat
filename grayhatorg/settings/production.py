@@ -99,11 +99,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'console': {
-            'level': 'DEBUG',
-            'class': 'logging.StreamHandler',
-            'formatter': 'simple'
-        },
         'mail_admins': {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
