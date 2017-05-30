@@ -86,3 +86,6 @@ EMAIL_HOST_PASSWORD = 'Maxy@2u6z3r0'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
+# DEFAULT_FROM_EMAIL = 'info@garyhat.com'
+
+ADMINS = [('Maxadmin', 'samrat.patil0202@gmail.com')]
