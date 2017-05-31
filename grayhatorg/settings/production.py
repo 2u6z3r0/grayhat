@@ -10,6 +10,10 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 # Allow all host headers
 ALLOWED_HOSTS = ['*']
 
+#disqus setup
+DISQUS_API_KEY = 'PJpRGLPMlp9nKc97zPtZAKJBPZT484KSTePTz6RRRGErGswul1RJryQ25Mijwimc'
+DISQUS_WEBSITE_SHORTNAME = 'grayhat-heroku'
+
 # DATABASES = settings.DATABASES
 
 # we only need the engine name, as heroku takes care of the rest
