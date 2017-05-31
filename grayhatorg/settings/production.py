@@ -81,12 +81,12 @@ LOGGING = {
 }
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'samrat.patil0202@gmail.com'
-EMAIL_HOST_PASSWORD = 'Maxy@2u6z3r0'
+EMAIL_HOST_USER = 'report.grayhat@gmail.com'
+EMAIL_HOST_PASSWORD = 'Maxy675689'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 SERVER_EMAIL = EMAIL_HOST_USER
-DEFAULT_FROM_EMAIL = 'info@garyhat.com'
+DEFAULT_FROM_EMAIL = 'report.grayhat@gamil.com'
 
 ADMINS = [('Maxadmin', 'samrat.patil0202@gmail.com')]
 
@@ -108,6 +108,11 @@ LOGGING = {
             'level': 'ERROR',
             'filters': ['require_debug_false'],
             'class': 'django.utils.log.AdminEmailHandler'
+        },
+         'console': {
+            'level': 'DEBUG',
+            'class': 'logging.StreamHandler',
+            'formatter': 'verbose'
         },
     },
     'loggers': {
