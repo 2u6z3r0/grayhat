@@ -100,6 +100,7 @@ LOGGING = {
                        'funcname=%(funcName)s %(message)s'),
             'datefmt': '%Y-%m-%d %H:%M:%S'
         },
+    }
     'filters': {
         'require_debug_false': {
             '()': 'django.utils.log.RequireDebugFalse'
