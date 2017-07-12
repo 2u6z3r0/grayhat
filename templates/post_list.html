@@ -12,8 +12,8 @@
             {% endif %}
           <div class="post-detail-item caption" >
               <h2><a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a> <small><span class="glyphicon glyphicon-calendar"></span>{{ obj.publish|timesince }} ago</small></h2>
-              <div class="col-sm-2"> <span class=" glyphicon glyphicon-eye-open"></span> {{ obj.total_views }}
-              </div>
+{#              <div class="col-sm-2"> <span class=" glyphicon glyphicon-eye-open"></span> {{ obj.total_views }}#}
+{#              </div>#}
               <div class="col-sm-4"> <span class="glyphicon glyphicon-user"></span> {{ obj.author.get_full_name }}
               </div>
               <div class="col-sm-4"> <span class="glyphicon glyphicon-folder-open"></span>

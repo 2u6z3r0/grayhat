@@ -15,8 +15,8 @@
         <h2>{{ instance.title }} <small>{{ instance.publish }}</small></h2>
             {% if instance.draft %} <span style="color: red;">Draft : staff only</span>{% endif %}<br>
             {% if instance.publish > today %} <span style="color: red;">Future post : staff only</span> <br>{% endif %}
-            <div class="col-sm-2"><span class=" glyphicon glyphicon-eye-open"></span> {{ instance.total_views }}
-            </div>
+{#            <div class="col-sm-2"><span class=" glyphicon glyphicon-eye-open"></span> {{ instance.total_views }}#}
+{#            </div>#}
             <div class="col-sm-4"> <span class="glyphicon glyphicon-user"></span> {{ instance.author.get_full_name }}
             </div>
             <div class="col-sm-4"><span class="glyphicon glyphicon-folder-open"></span>
