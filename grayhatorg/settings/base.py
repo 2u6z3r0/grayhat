@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'disqus',
     # local
     'posts',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
