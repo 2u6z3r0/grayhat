@@ -25,6 +25,7 @@ class PostDetailSerializer(ModelSerializer):
     author_name = SerializerMethodField()
     image = SerializerMethodField()
     html_content = SerializerMethodField()
+
     class Meta:
         model = Post
         fields = ['id', 'author_name', 'title', 'slug', 'content', 'html_content','draft', 'publish', 'image']
