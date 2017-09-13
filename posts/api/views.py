@@ -17,6 +17,7 @@ from .serializers import (
     PostCreateUpdateSerializer,
     )
 
+from .pagination import PostPageNumberPagination
 from posts.models import Post
 from rest_framework.permissions import (
     IsAdminUser, AllowAny,
@@ -30,6 +31,7 @@ class PostDeleteAPIView(DestroyAPIView):
     queryset = Post.objects.all()
     serializer_class = PostListSerializer
     lookup_field = 'slug'
+    permission_classes = [IsAdminUser, IsOwnerOrReadOnly]
 
 class PostDetailAPIView(RetrieveAPIView):
     queryset = Post.objects.all()
@@ -41,6 +43,7 @@ class PostListAPIView(ListAPIView):
     serializer_class = PostListSerializer
     filter_backends = [SearchFilter]
     SearchFields = ['title', 'content', 'author__first_name', 'author__last_name']
+    pagination_class = PostPageNumberPagination
 
     def get_queryset(self, *args, **kwargs):
         queryset_list = Post.objects.all()
