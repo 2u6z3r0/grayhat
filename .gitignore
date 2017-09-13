@@ -147,6 +147,6 @@ media
 
 # Django secret key and db keys
 grayhatorg/secret.py
-
+grayhatorg/settings/*
 #pycharm workspace
 .idea/*
