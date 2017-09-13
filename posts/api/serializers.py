@@ -15,7 +15,7 @@ class PostListSerializer(ModelSerializer):
     author_name = SerializerMethodField()
     class Meta:
         model = Post
-        fields = ['url', 'id', 'author_name', 'title', 'content', 'draft', 'publish']
+        fields = ['url', 'author_name', 'title', 'content', 'draft', 'publish']
 
     def get_author_name(self, obj):
         return str(obj.author.get_full_name())
@@ -28,7 +28,7 @@ class PostDetailSerializer(ModelSerializer):
 
     class Meta:
         model = Post
-        fields = ['id', 'author_name', 'title', 'slug', 'content', 'html_content','draft', 'publish', 'image']
+        fields = ['author_name', 'title', 'slug', 'content', 'html_content', 'draft', 'publish', 'image']
 
     def get_author_name(self, obj):
         return str(obj.author.get_full_name())
@@ -37,7 +37,7 @@ class PostDetailSerializer(ModelSerializer):
         try:
             image = obj.image.url
         except:
-            image= None
+            image = None
         return image
 
     def get_html_content(self, obj):
