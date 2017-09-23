@@ -144,6 +144,7 @@ ENV/
 *.pyc
 db.sqlite3
 media
+grayhatorg/templates/*
 
 # Django secret key and db keys
 grayhatorg/secret.py
